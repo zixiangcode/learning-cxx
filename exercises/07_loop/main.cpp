@@ -2,12 +2,13 @@
 
 // TODO: 改正函数实现，实现正确的缓存优化斐波那契计算
 // THINk: 这个函数是一个纯函数（pure function）吗？
+// 显然不是，因为它的结果依赖于外部变量 cache
 // READ: 纯函数 <https://zh.wikipedia.org/wiki/%E7%BA%AF%E5%87%BD%E6%95%B0>
 static unsigned long long fibonacci(int i) {
-    // TODO: 为缓存设置正确的初始值
-    static unsigned long long cache[96], cached;
-    // TODO: 设置正确的循环条件
-    for (; false; ++cached) {
+    // 为缓存设置正确的初始值
+    static unsigned long long cache[96]{0, 1}, cached = 2;
+    // 设置正确的循环条件
+    for (; cached < 96; ++cached) {
         cache[cached] = cache[cached - 1] + cache[cached - 2];
     }
     return cache[i];

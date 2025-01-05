@@ -6,12 +6,14 @@
 
 template<class k, class v>
 bool key_exists(std::map<k, v> const &map, k const &key) {
-    // TODO: 实现函数
+    // 使用 find() 查找键，如果找到则返回迭代器不等于 end()
+    return map.find(key) != map.end();
 }
 
 template<class k, class v>
 void set(std::map<k, v> &map, k key, v value) {
-    // TODO: 实现函数
+    // 直接使用 [] 运算符设置值，如果键不存在会自动创建
+    map[key] = value;
 }
 
 // ---- 不要修改以下代码 ----
